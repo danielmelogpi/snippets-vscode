@@ -1,0 +1,88 @@
+{
+/*
+	 // Place your snippets for JavaScript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+*/
+
+	"Print to console log": {
+		"prefix": "log",
+		"body": ["console.log($1);"]
+
+	},
+	"Self calling function": {
+		"prefix": "sfun",
+		"body": ["(function ($1) {", 
+		"	$3",
+		"})($2)"]
+	},
+
+	"Fluig - Get service Helper": {
+		"prefix": "getService",
+		"body":[
+			"function getServiceHelper() {",
+			"    var fluigService = ServiceManager.getService('$1');",
+			"    return fluigService.getBean();",
+			"}"
+		]
+	},
+
+	"Fluig - Instantiate service": {
+		"prefix": "getService",
+		"body": [
+			"function getService() {",
+			"    return getServiceHelper()",
+			"        .instantiate('br.com.pcsist.service.$1')",
+			"        .get$2WsPort();",
+			"}"
+		]
+	},
+
+	"Fluig - getDataset": {
+		"prefix": "getDataset",
+		"body": [
+			"var ${dataset} = DatasetFactory.getDataset(\"${datasetname}\", ${fieldsOrNull}, ${constraintsOrNull}, ${orderOrNull});"
+		]
+	},
+
+	"Fluig - create Contraint" : {
+		"prefix":"createConstraint",
+		"body": [
+			"var ${constr1} = DatasetFactory.createConstraint(\"${constraintName}\", \"${initialValue}\", \"${finalValue}\", ConstraintType.${MUST});"
+		]
+	},
+
+	"Fluig create dataset definition": {
+		"prefix": "createDataset",
+		"body": [
+			"var dataset = DatasetBuilder.newDataset();",
+			"dataset.addColumn(\"${Col1}\");",
+			"dataset.addRow([\"${valorCol1}\"]);",
+			"return dataset;"
+		]
+	}
+
+}
+
+
+/*
+ var dataset = DatasetBuilder.newDataset();
+       
+    //Cria as colunas
+    dataset.addColumn("Sigla");
+    dataset.addColumn("Estado");
+    dataset.addColumn("Capital");
+    dataset.addColumn("Area");
+      
+    //Cria os registros
+    dataset.addRow(new Array("AM", "Amazonas", "Manaus", 1570746));
+*/
